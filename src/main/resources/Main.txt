@@ -1,0 +1,4 @@
+10 SET test = 1
+20 GET test
+25 SET test = $test + 1
+30 IF $test < 10 GOTO 20
