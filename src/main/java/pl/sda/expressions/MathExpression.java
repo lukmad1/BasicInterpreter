@@ -20,7 +20,6 @@ public abstract class MathExpression implements Expression {
         Matcher matcher = pattern.matcher(cmd);
 
         while (matcher.find() && matcher.group(2).matches(handeledSign())) {
-            System.out.println(cmd);
             cmd = matcher.replaceFirst(calculate(matcher.group(1), matcher.group(3)));
             matcher = pattern.matcher(cmd);
         }
