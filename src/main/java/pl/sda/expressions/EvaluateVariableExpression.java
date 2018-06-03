@@ -18,9 +18,10 @@ public class EvaluateVariableExpression implements Expression {
 
         Pattern pattern = Pattern.compile("(\\$)(\\w+)");
         Matcher matcher = pattern.matcher(cmd);
-        if (matcher.find()) {
+        while(matcher.find()) {
             String value = dataMemory.get(matcher.group(2));
-            cmd = cmd.replaceAll("\\$\\w+", value);
+
+            cmd = cmd.replaceFirst("\\$\\w+", value);
         }
         return cmd;
     }

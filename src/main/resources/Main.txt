@@ -1,4 +1,5 @@
 10 SET test = 1
-20 GET test
-25 SET test = $test + 1
-30 IF $test < 10 GOTO 20
+20 SET asd = 2
+30 PRINT $test i $asd
+40 SET test = $test + $asd + 5 * 8 / 8 - 5
+50 GET test

@@ -1,25 +1,23 @@
 package pl.sda.expressions;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class MulExpression extends ExpressionDecorator{
+public class MulExpression extends MathExpression {
     private final String SUB_REGEXP = "(\\d+)( ?\\* ?)(\\d+)";
 
     public MulExpression(Expression expression) {
         super(expression);
+        setREGEXP(SUB_REGEXP);
     }
 
 
     @Override
-    public String evaluate(String cmd) {
-        Pattern pattern = Pattern.compile(SUB_REGEXP);
-        Matcher matcher = pattern.matcher(cmd);
-        if (matcher.find()) {
-            String value = "" + (Integer.parseInt(matcher.group(1)) * Integer.parseInt(matcher.group(3)));
-            cmd = cmd.replaceFirst(SUB_REGEXP, value);
-        }
-        return cmd;
+    protected String handeledSign() {
+        return " ?\\* ?";
+    }
+
+    @Override
+    protected String calculate(String left, String right) {
+        return "" + (Integer.parseInt(left) * Integer.parseInt(right));
     }
 }
 
