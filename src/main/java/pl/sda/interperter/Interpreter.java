@@ -34,7 +34,7 @@ public class Interpreter {
             expression = new SumExpression(expression);
             expression = new SubExpression(expression);
             //Decorating with IfExpression
-            expression = new IfExpression(expression, dataMemory);
+            expression = new IfExpression(expression);
 
             instruction = expression.evaluate(instruction);
 

@@ -1,17 +1,14 @@
 package pl.sda.expressions;
 
-import pl.sda.memory.DataMemory;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IfExpression implements Expression {
-    private DataMemory dataMemory;
     private final String IF_REGEXP = "(IF )(\\w+)(( ?< ?)|( ?> ?)|( ?== ?)|( ?!= ?))(\\w+)( )";
     private Expression expression;
 
-    public IfExpression(Expression expression, DataMemory dataMemory) {
-        this.dataMemory = dataMemory;
+    public IfExpression(Expression expression) {
         this.expression = expression;
     }
 
