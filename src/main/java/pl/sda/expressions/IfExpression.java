@@ -8,15 +8,17 @@ import java.util.regex.Pattern;
 public class IfExpression implements Expression {
     private DataMemory dataMemory;
     private final String IF_REGEXP = "(IF )(\\w+)(( ?< ?)|( ?> ?)|( ?== ?)|( ?!= ?))(\\w+)( )";
+    private Expression expression;
 
-    public IfExpression(DataMemory dataMemory) {
+    public IfExpression(Expression expression, DataMemory dataMemory) {
         this.dataMemory = dataMemory;
+        this.expression = expression;
     }
 
 
     @Override
     public String evaluate(String cmd) {
-
+        cmd = expression.evaluate(cmd);
         Pattern pattern = Pattern.compile(IF_REGEXP);
         Matcher matcher = pattern.matcher(cmd);
 

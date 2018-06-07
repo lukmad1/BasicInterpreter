@@ -16,6 +16,7 @@ public abstract class MathExpression implements Expression {
     }
 
     public String evaluate(String cmd) {
+        cmd = expression.evaluate(cmd);
         Pattern pattern = Pattern.compile(REGEXP);
         Matcher matcher = pattern.matcher(cmd);
 

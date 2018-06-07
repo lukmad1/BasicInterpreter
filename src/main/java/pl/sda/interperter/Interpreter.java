@@ -28,21 +28,14 @@ public class Interpreter {
             programMemory.incrementProgramCounter();
 
             Expression expression = new EvaluateVariableExpression(dataMemory);
-            instruction = expression.evaluate(instruction);
-
+            //Decorating expression with math expressions
             expression = new MulExpression(expression);
-            instruction = expression.evaluate(instruction);
-
             expression = new DivExpression(expression);
-            instruction = expression.evaluate(instruction);
-
             expression = new SumExpression(expression);
-            instruction = expression.evaluate(instruction);
-
             expression = new SubExpression(expression);
-            instruction = expression.evaluate(instruction);
+            //Decorating with IfExpression
+            expression = new IfExpression(expression, dataMemory);
 
-            expression = new IfExpression(dataMemory);
             instruction = expression.evaluate(instruction);
 
             this.instructions.execute(instruction);
